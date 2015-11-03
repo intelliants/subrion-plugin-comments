@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="comments">
+	<title>Comments</title>
+	<summary>This plugin allows visitors to comment any listing.</summary>
+	<author>Intelliants LLC</author>
+	<contributor>Intelliants LLC</contributor>
+	<version>4.0.0</version>
+	<date>2015-11-03</date>
+	<compatibility>4.0</compatibility>
+
+	<actions>
+		<action name="comments_view" url="comments/" icon="list" order="1" pages="comments">View</action>
+	</actions>
+
+	<adminpages>
+		<page name="comments" url="comments/" menus="menu" order="40">Comments</page>
+	</adminpages>
+
+	<pages>
+		<page name="comments" service="1" url="comments/">Comments</page>
+	</pages>
+
+	<configgroup name="comments">Comments</configgroup>
+
+	<config group="comments" name="comments" type="divider" description="Comments Configuration">Comments Configuration</config>
+	<config group="comments" name="comments_items_enabled" type="itemscheckbox" description="List of items comments are enabled for">members,autos,articles,estates,listings,coupons,shops,ypages</config>
+	<config group="comments" name="comments_items_implemented" type="hidden" description="">members,autos,articles,estates,listings,coupons,shops,ypages</config>
+	<config group="comments" name="comments_enabled" type="radio" description="Allow comments submission" values="1,0">1</config>
+	<config group="comments" name="comments_allow_guests" type="radio" description="Allow guests to comment" values="1,0">1</config>
+	<config group="comments" name="comments_allow_wysiwyg" type="radio" description="Enable WYSIWYG editor" values="1,0" private="0">0</config>
+	<config group="comments" name="comments_approval" type="radio" description="Comments auto-approval" values="1,0" private="0">0</config>
+	<config group="comments" name="text_smiles_to_graphic" type="radio" description="Auto replace text smiles to graphic" values="1,0" private="0">0</config>
+	<config group="comments" name="comment_min_chars" type="text" description="Min number of chars for listing comment" private="0">10</config>
+	<config group="comments" name="comment_max_chars" type="text" description="Max number of chars for listing comment" private="0">1000</config>
+	<config group="comments" name="num_latest_comments" type="text" description="Number of latest comments in block" private="0">5</config>
+
+	<phrases>
+		<phrase category="common" key="comment">Comment</phrase>
+		<phrase category="common" key="comments">Comments</phrase>
+
+		<phrase category="common" key="author_email">Author's Email</phrase>
+		<phrase category="common" key="author_url">Author's URL</phrase>
+		<phrase category="common" key="comment_author">Author's Name</phrase>
+
+		<phrase category="admin" key="all_comments">All Comments</phrase>
+		<phrase category="admin" key="are_you_sure_to_delete_this_comment">Are you sure you want to delete this comment?</phrase>
+		<phrase category="admin" key="are_you_sure_to_delete_selected_comments">Are you sure you want to delete selected comments?</phrase>
+		<phrase category="admin" key="edit_comment">Edit comment</phrase>
+		<phrase category="admin" key="enable_comments_for">Enable Comments for</phrase>
+		<phrase category="admin" key="item_id">Item ID</phrase>
+		<phrase category="admin" key="manage_comments">Comments</phrase>
+		<phrase category="admin" key="no_comment_relation">No comment relation</phrase>
+		<phrase category="admin" key="changes_saved">Saved</phrase>
+
+		<phrase category="frontend" key="about">about</phrase>
+		<phrase category="frontend" key="add_comment">Add Comment</phrase>
+		<phrase category="frontend" key="comment_added">Comment added.</phrase>
+		<phrase category="frontend" key="comment_waits_approve">Your comment has to be approved by administrator.</phrase>
+		<phrase category="frontend" key="error_comment">Make sure you have entered a valid comment.</phrase>
+		<phrase category="frontend" key="error_item_not_allowed"><![CDATA[Sorry, but you can not send your comment. It is disabled by administrator.]]></phrase>
+		<phrase category="frontend" key="error_url">URL is incorrect.</phrase>
+		<phrase category="frontend" key="error_comment_author">Make sure you have entered a valid name.</phrase>
+		<phrase category="frontend" key="error_comment_email">Make sure you have entered a valid email.</phrase>
+		<phrase category="frontend" key="error_comment_logged">Comments for unregistered members are disabled</phrase>
+		<phrase category="frontend" key="error_max_comment">Your comment length should be less than :length symbols.</phrase>
+		<phrase category="frontend" key="error_min_comment">Your comment length should be more than :length symbols.</phrase>
+		<phrase category="frontend" key="leave_comment">Post</phrase>
+		<phrase category="frontend" key="leave_your_comment">Leave Comment</phrase>
+		<phrase category="frontend" key="listing_comments_submission_disabled">Listing comments submission is disabled by adminstrator.</phrase>
+		<phrase category="frontend" key="no_comments">No comments have been left here yet.</phrase>
+		<phrase category="frontend" key="view_subject">View Subject</phrase>
+	</phrases>
+
+	<blocks>
+		<block name="latest_comments" title="Latest Comments" collapsible="1" position="right" type="smarty" filename="block.latest-comments"><![CDATA[]]></block>
+	</blocks>
+
+	<hooks>
+		<hook name="phpCoreBeforePageDisplay" type="php" page_type="front"  filename="plugins/comments/includes/hook.blocks-load.php"><![CDATA[]]></hook>
+		<hook name="phpViewListingBeforeStart" type="php" page_type="front" filename="plugins/comments/includes/hook.item-comments.php"><![CDATA[]]></hook>
+		<hook name="smartyViewListingBeforeFooter" type="smarty" page_type="front" filename="plugins/comments/templates/front/item-comments.tpl"><![CDATA[]]></hook>
+
+		<hook name="adminDashboardStatistics" page_type="admin"><![CDATA[$items['comments:comments'] = 'plugin';]]></hook>
+	</hooks>
+
+	<install>
+		<sql>
+			<![CDATA[
+CREATE TABLE `{prefix}comments` (
+	`id` int(8) NOT NULL auto_increment,
+	`item_id` int(8) NOT NULL,
+	`member_id` int(8) NOT NULL,
+	`item` varchar(100) NOT NULL default 'accounts',
+	`author` varchar(100) NOT NULL,
+	`url` tinytext NOT NULL,
+	`body` text NOT NULL,
+	`email` varchar(100) NOT NULL,
+	`ip` bigint(12) unsigned NOT NULL,
+	`rating` varchar(50) NOT NULL,
+	`date` datetime NOT NULL,
+	`status` enum('inactive', 'active') NOT NULL default 'inactive',
+	`sess_id` varchar(32) NOT NULL,
+	PRIMARY KEY  (`id`),
+	KEY `ITEM` (`item_id`)
+) {mysql_version};
+			]]>
+		</sql>
+	</install>
+
+	<uninstall>
+		<sql>
+			<![CDATA[
+DROP TABLE IF EXISTS `{prefix}comments`;
+			]]>
+		</sql>
+	</uninstall>
+</plugin>
