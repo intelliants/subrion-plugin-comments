@@ -67,12 +67,12 @@
 		<phrase category="frontend" key="leave_comment">Post</phrase>
 		<phrase category="frontend" key="leave_your_comment">Leave Comment</phrase>
 		<phrase category="frontend" key="listing_comments_submission_disabled">Listing comments submission is disabled by adminstrator.</phrase>
-		<phrase category="frontend" key="no_comments">No comments have been left here yet.</phrase>
+		<phrase category="frontend" key="no_comments">No comments have been left here yet. Be the first who will do it.</phrase>
 		<phrase category="frontend" key="view_subject">View Subject</phrase>
 	</phrases>
 
 	<blocks>
-		<block name="latest_comments" title="Latest Comments" collapsible="1" position="right" type="smarty" filename="block.latest-comments"><![CDATA[]]></block>
+		<block name="latest_comments" title="Latest Comments" collapsible="0" position="right" type="smarty" filename="block.latest-comments"><![CDATA[]]></block>
 	</blocks>
 
 	<hooks>
