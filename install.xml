@@ -4,8 +4,8 @@
 	<summary>This plugin allows visitors to comment any listing.</summary>
 	<author>Intelliants LLC</author>
 	<contributor>Intelliants LLC</contributor>
-	<version>4.0.0</version>
-	<date>2015-11-03</date>
+	<version>4.0.1</version>
+	<date>2016-01-06</date>
 	<compatibility>4.0</compatibility>
 
 	<actions>
@@ -23,8 +23,8 @@
 	<configgroup name="comments">Comments</configgroup>
 
 	<config group="comments" name="comments" type="divider" description="Comments Configuration">Comments Configuration</config>
-	<config group="comments" name="comments_items_enabled" type="itemscheckbox" description="List of items comments are enabled for">members,autos,articles,estates,listings,coupons,shops,ypages</config>
-	<config group="comments" name="comments_items_implemented" type="hidden" description="">members,autos,articles,estates,listings,coupons,shops,ypages</config>
+	<config group="comments" name="comments_items_enabled" type="itemscheckbox" description="List of items comments are enabled for">members,autos,autos_services,articles,estates,listings,coupons,shops,ypages</config>
+	<config group="comments" name="comments_items_implemented" type="hidden" description="">members,autos,autos_services,articles,estates,listings,coupons,shops,ypages</config>
 	<config group="comments" name="comments_enabled" type="radio" description="Allow comments submission" values="1,0">1</config>
 	<config group="comments" name="comments_allow_guests" type="radio" description="Allow guests to comment" values="1,0">1</config>
 	<config group="comments" name="comments_allow_wysiwyg" type="radio" description="Enable WYSIWYG editor" values="1,0" private="0">0</config>
@@ -79,8 +79,10 @@
 		<hook name="phpCoreBeforePageDisplay" type="php" page_type="front"  filename="plugins/comments/includes/hook.blocks-load.php"><![CDATA[]]></hook>
 		<hook name="phpViewListingBeforeStart" type="php" page_type="front" filename="plugins/comments/includes/hook.item-comments.php"><![CDATA[]]></hook>
 		<hook name="smartyViewListingBeforeFooter" type="smarty" page_type="front" filename="plugins/comments/templates/front/item-comments.tpl"><![CDATA[]]></hook>
-
 		<hook name="adminDashboardStatistics" page_type="admin"><![CDATA[$items['comments:comments'] = 'plugin';]]></hook>
+		<hook name="phpExtrasUninstallBefore" page_type="admin" filename="plugins/comments/includes/hook.package-actions.php"><![CDATA[]]></hook>
+		<hook name="phpPackageDeactivated" page_type="admin" filename="plugins/comments/includes/hook.package-actions.php"><![CDATA[]]></hook>
+		<hook name="phpPackageActivated" page_type="admin" filename="plugins/comments/includes/hook.package-actions.php"><![CDATA[]]></hook>
 	</hooks>
 
 	<install>
