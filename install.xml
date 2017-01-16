@@ -9,7 +9,7 @@
 	<compatibility>4.0</compatibility>
 
 	<actions>
-		<action name="comments_view" url="comments/" icon="list" order="1" pages="comments">View</action>
+		<action name="comments_view" url="comments/" icon="list" order="1" pages="comments">view_comments</action>
 	</actions>
 
 	<adminpages>
@@ -51,6 +51,7 @@
 		<phrase category="admin" key="manage_comments">Comments</phrase>
 		<phrase category="admin" key="no_comment_relation">No comment relation</phrase>
 		<phrase category="admin" key="changes_saved">Saved</phrase>
+		<phrase category="admin" key="view_comments">View Comments</phrase>
 
 		<phrase category="frontend" key="about">about</phrase>
 		<phrase category="frontend" key="add_comment">Add Comment</phrase>
