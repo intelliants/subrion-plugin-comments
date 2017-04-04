@@ -23,7 +23,7 @@ $(function()
 		var el = $(this);
 
 		el.attr('disabled', 'disabled')
-			.after('<img src="' + intelli.config.baseurl + 'plugins/comments/templates/front/img/ajax-loader.gif" id="comments-loader" style="margin-left: 15px;">');
+			.after('<img src="' + intelli.config.baseurl + 'modules/comments/templates/front/img/ajax-loader.gif" id="comments-loader" style="margin-left: 15px;">');
 
 		var author = $('input[name="author"]').val();
 		var email = $('input[name="email"]').val();

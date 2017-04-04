@@ -2,7 +2,7 @@
 /******************************************************************************
  *
  * Subrion - open source content management system
- * Copyright (C) 2016 Intelliants, LLC <http://www.intelliants.com>
+ * Copyright (C) 2017 Intelliants, LLC <https://intelliants.com>
  *
  * This file is part of Subrion.
  *
@@ -20,43 +20,38 @@
  * along with Subrion. If not, see <http://www.gnu.org/licenses/>.
  *
  *
- * @link http://www.subrion.org/
+ * @link https://subrion.org/
  *
  ******************************************************************************/
 
-if (empty($item))
-{
-	return;
+if (empty($item)) {
+    return;
 }
 
 $enabledItems = $iaCore->get('comments_items_enabled');
 
-if (empty($enabledItems))
-{
-	return;
+if (empty($enabledItems)) {
+    return;
 }
 
 $enabledItems = explode(',', $enabledItems);
 
-if (empty($enabledItems) || !is_array($enabledItems))
-{
-	return;
+if (empty($enabledItems) || !is_array($enabledItems)) {
+    return;
 }
 
-if (in_array($item, $enabledItems) && $iaCore->get('comments_enabled'))
-{
-	$iaComment = $iaCore->factoryPlugin('comments', iaCore::FRONT, 'comment');
+if (in_array($item, $enabledItems) && $iaCore->get('comments_enabled')) {
+    $iaComment = $iaCore->factoryPlugin('comments', iaCore::FRONT, 'comment');
 
-	$comments = $iaComment->getByItem($item, $listing);
+    $comments = $iaComment->getByItem($item, $listing);
 
-	if ($iaCore->get('text_smiles_to_graphic'))
-	{
-		$comments = iaComment::smilesToImages($comments);
-	}
+    if ($iaCore->get('text_smiles_to_graphic')) {
+        $comments = iaComment::smilesToImages($comments);
+    }
 
-	$iaView->assign('comments', $comments);
-	$iaView->assign('comments_item', $item);
+    $iaView->assign('comments', $comments);
+    $iaView->assign('comments_item', $item);
 
-	// add custom styles for decoration
-	$iaView->add_css('_IA_URL_plugins/comments/templates/front/css/style');
+    // add custom styles for decoration
+    $iaView->add_css('_IA_URL_modules/comments/templates/front/css/style');
 }

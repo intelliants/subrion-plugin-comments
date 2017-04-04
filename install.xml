@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<plugin name="comments">
+<module type="plugin" name="comments">
 	<title>Comments</title>
 	<summary>This plugin allows visitors to comment any listing.</summary>
 	<author>Intelliants LLC</author>
 	<contributor>Intelliants LLC</contributor>
-	<version>4.0.1</version>
-	<date>2016-01-06</date>
-	<compatibility>4.0</compatibility>
+	<version>4.1.0</version>
+	<date>2017-04-04</date>
+	<compatibility>4.1</compatibility>
 
 	<actions>
-		<action name="comments_view" url="comments/" icon="list" order="1" pages="comments">view_comments</action>
+		<action name="comments_view" url="comments/" icon="list" order="1" pages="comments">Comments</action>
 	</actions>
 
 	<adminpages>
@@ -77,13 +77,13 @@
 	</blocks>
 
 	<hooks>
-		<hook name="phpCoreBeforePageDisplay" type="php" page_type="front"  filename="plugins/comments/includes/hook.blocks-load.php"><![CDATA[]]></hook>
-		<hook name="phpViewListingBeforeStart" type="php" page_type="front" filename="plugins/comments/includes/hook.item-comments.php"><![CDATA[]]></hook>
-		<hook name="smartyViewListingBeforeFooter" type="smarty" page_type="front" filename="plugins/comments/templates/front/item-comments.tpl"><![CDATA[]]></hook>
+		<hook name="phpCoreBeforePageDisplay" type="php" page_type="front"  filename="hook.blocks-load"><![CDATA[]]></hook>
+		<hook name="phpViewListingBeforeStart" type="php" page_type="front" filename="hook.item-comments"><![CDATA[]]></hook>
+		<hook name="smartyViewListingBeforeFooter" type="smarty" page_type="front" filename="item-comments"><![CDATA[]]></hook>
 		<hook name="adminDashboardStatistics" page_type="admin"><![CDATA[$items['comments:comments'] = 'plugin';]]></hook>
-		<hook name="phpExtrasUninstallBefore" page_type="admin" filename="plugins/comments/includes/hook.package-actions.php"><![CDATA[]]></hook>
-		<hook name="phpPackageDeactivated" page_type="admin" filename="plugins/comments/includes/hook.package-actions.php"><![CDATA[]]></hook>
-		<hook name="phpPackageActivated" page_type="admin" filename="plugins/comments/includes/hook.package-actions.php"><![CDATA[]]></hook>
+		<hook name="phpExtrasUninstallBefore" page_type="admin" filename="hook.package-actions"><![CDATA[]]></hook>
+		<hook name="phpPackageDeactivated" page_type="admin" filename="hook.package-actions"><![CDATA[]]></hook>
+		<hook name="phpPackageActivated" page_type="admin" filename="hook.package-actions"><![CDATA[]]></hook>
 	</hooks>
 
 	<install>
@@ -117,4 +117,4 @@ DROP TABLE IF EXISTS `{prefix}comments`;
 			]]>
 		</sql>
 	</uninstall>
-</plugin>
+</module>

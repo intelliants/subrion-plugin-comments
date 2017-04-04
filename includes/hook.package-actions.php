@@ -2,7 +2,7 @@
 /******************************************************************************
  *
  * Subrion - open source content management system
- * Copyright (C) 2016 Intelliants, LLC <http://www.intelliants.com>
+ * Copyright (C) 2017 Intelliants, LLC <https://intelliants.com>
  *
  * This file is part of Subrion.
  *
@@ -20,51 +20,47 @@
  * along with Subrion. If not, see <http://www.gnu.org/licenses/>.
  *
  *
- * @link http://www.subrion.org/
+ * @link https://subrion.org/
  *
  ******************************************************************************/
 
-if (iaView::REQUEST_HTML == $iaView->getRequestType())
-{
-	$action = $iaCore->requestPath[1];
+if (iaView::REQUEST_HTML == $iaView->getRequestType()) {
+    $action = $iaCore->requestPath[1];
 
-	$iaComment = $iaCore->factoryPlugin('comments', iaCore::ADMIN, 'comment');
-	$packageItems = $iaDb->onefield('item', "`package` = '{$extra}'", null, null, 'items');
-	$itemsEnabled = explode(',', $iaCore->get('comments_items_enabled'));
+    $iaComment = $iaCore->factoryPlugin('comments', iaCore::ADMIN, 'comment');
+    $packageItems = $iaDb->onefield('item', "`package` = '{$extra}'", null, null, 'items');
+    $itemsEnabled = explode(',', $iaCore->get('comments_items_enabled'));
 
-	if ($packageItems)
-	{
-		$items = array();
-		foreach ($packageItems as $item)
-		{
-			if (in_array($item, $itemsEnabled))
-			{
-				$items[] = $item;
-			}
-		}
+    if ($packageItems) {
+        $items = array();
+        foreach ($packageItems as $item) {
+            if (in_array($item, $itemsEnabled)) {
+                $items[] = $item;
+            }
+        }
 
-		if ($items)
-		{
-			$iaDb->setTable($iaComment::getTable());
-			switch ($action)
-			{
-				case 'activate':
-					$iaDb->update(array('status' => iaCore::STATUS_ACTIVE), "`item` IN ('" . implode("','", $items) . "')");
+        if ($items) {
+            $iaDb->setTable($iaComment::getTable());
+            switch ($action) {
+                case 'activate':
+                    $iaDb->update(array('status' => iaCore::STATUS_ACTIVE),
+                        "`item` IN ('" . implode("','", $items) . "')");
 
-					break;
+                    break;
 
-				case 'deactivate':
-					$iaDb->update(array('status' => iaCore::STATUS_INACTIVE), "`item` IN ('" . implode("','", $items) . "')");
+                case 'deactivate':
+                    $iaDb->update(array('status' => iaCore::STATUS_INACTIVE),
+                        "`item` IN ('" . implode("','", $items) . "')");
 
-					break;
+                    break;
 
-				case 'uninstall':
-					$iaDb->delete("`item` IN ('" . implode("','", $items) . "')");
+                case 'uninstall':
+                    $iaDb->delete("`item` IN ('" . implode("','", $items) . "')");
 
-					break;
+                    break;
 
-			}
-			$iaDb->resetTable();
-		}
-	}
+            }
+            $iaDb->resetTable();
+        }
+    }
 }
