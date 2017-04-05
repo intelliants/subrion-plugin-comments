@@ -126,7 +126,6 @@ if (iaView::REQUEST_JSON == $iaView->getRequestType() && isset($_POST['action'])
 
             $iaDb->resetTable();
         }
-
     }
 
     $output['error'] = $error;

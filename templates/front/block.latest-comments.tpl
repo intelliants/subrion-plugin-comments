@@ -1,5 +1,5 @@
-{if isset($latest_comments)}
-    {foreach $latest_comments as $comment name='latest_comments'}
+{if !empty($latest_comments)}
+    {foreach $latest_comments as $comment}
         <div class="media">
             <div class="media-body">
                 {$comment.body|strip_tags|truncate:200:"..."}

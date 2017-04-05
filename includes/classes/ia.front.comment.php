@@ -85,11 +85,11 @@ class iaComment extends abstractModuleFront
     public static function smilesToImages(&$comments)
     {
         $map = array(
-            ':)' => '<img alt=":)" src="' . IA_URL . 'plugins/comments/templates/front/img/smiles/smile.png">',
-            '=)' => '<img alt="=)" src="' . IA_URL . 'plugins/comments/templates/front/img/smiles/smile.png">',
-            ':(' => '<img alt=":(" src="' . IA_URL . 'plugins/comments/templates/front/img/smiles/sad.png">',
-            '=(' => '<img alt="=(" src="' . IA_URL . 'plugins/comments/templates/front/img/smiles/sad.png">',
-            ':D' => '<img alt=":D" src="' . IA_URL . 'plugins/comments/templates/front/img/smiles/happy.png">',
+            ':)' => '<img alt=":)" src="' . IA_URL . 'modules/comments/templates/front/img/smiles/smile.png">',
+            '=)' => '<img alt="=)" src="' . IA_URL . 'modules/comments/templates/front/img/smiles/smile.png">',
+            ':(' => '<img alt=":(" src="' . IA_URL . 'modules/comments/templates/front/img/smiles/sad.png">',
+            '=(' => '<img alt="=(" src="' . IA_URL . 'modules/comments/templates/front/img/smiles/sad.png">',
+            ':D' => '<img alt=":D" src="' . IA_URL . 'modules/comments/templates/front/img/smiles/happy.png">',
         );
 
         $keys = array_keys($map);

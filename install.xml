@@ -8,10 +8,6 @@
 	<date>2017-04-04</date>
 	<compatibility>4.1</compatibility>
 
-	<actions>
-		<action name="comments_view" url="comments/" icon="list" order="1" pages="comments">Comments</action>
-	</actions>
-
 	<adminpages>
 		<page name="comments" url="comments/" menus="menu" order="40">Comments</page>
 	</adminpages>

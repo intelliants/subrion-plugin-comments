@@ -51,7 +51,6 @@ if (iaView::REQUEST_HTML == $iaView->getRequestType() && $iaView->blockExists('l
         if (isset($itemData['title'])) {
             $array[$key]['item_title'] = $itemData['title'];
         }
-
     }
 
     if ($iaCore->get('text_smiles_to_graphic')) {
