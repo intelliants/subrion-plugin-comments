@@ -66,6 +66,11 @@ class iaComment extends abstractModuleFront
         return $comment;
     }
 
+    public function coreSearch($stmt, $start, $limit, $order)
+    {
+        return false;
+    }
+
     public function getByItem($itemName, $itemId, $start = 0, $limit = 0)
     {
         $stmt = "t1.`item` = '{$itemName}' "
