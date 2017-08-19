@@ -19,8 +19,8 @@
     <configgroup name="comments">Comments</configgroup>
 
     <config group="comments" name="comments" type="divider" description="Comments Configuration">Comments Configuration</config>
-    <config group="comments" name="comments_items_enabled" type="itemscheckbox" description="List of items comments are enabled for">members,autos,autos_services,articles,estates,listings,coupons,shops,ypages</config>
-    <config group="comments" name="comments_items_implemented" type="hidden" description="">members,autos,autos_services,articles,estates,listings,coupons,shops,ypages</config>
+    <config group="comments" name="comments_items_enabled" type="itemscheckbox" description="List of items comments are enabled for">members,autos,autos_services,articles,estates,listings,coupons,shops,venues</config>
+    <config group="comments" name="comments_items_implemented" type="hidden" description="">members,autos,autos_services,articles,estates,listings,coupons,shops,venues</config>
     <config group="comments" name="comments_enabled" type="radio" description="Allow comments submission" values="1,0">1</config>
     <config group="comments" name="comments_allow_guests" type="radio" description="Allow guests to comment" values="1,0">1</config>
     <config group="comments" name="comments_allow_wysiwyg" type="radio" description="Enable WYSIWYG editor" values="1,0" private="0">0</config>

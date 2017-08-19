@@ -38,8 +38,8 @@ if (iaView::REQUEST_HTML == $iaView->getRequestType() && $iaView->blockExists('l
             $itemData['title'] = $itemData['fullname'] ? $itemData['fullname'] : $itemData['username'];
             $array[$key]['item_url'] = IA_URL . 'member/' . $itemData['username'] . '.html';
         } else {
-            $itemPackage = $iaItem->getPackageByItem($comment['item']);
-            $itemClass = $iaCore->factoryModule('item', $itemPackage, iaCore::FRONT, $comment['item']);
+            $itemModule = $iaItem->getModuleByItem($comment['item']);
+            $itemClass = $iaCore->factoryModule('item', $itemModule, iaCore::FRONT, $comment['item']);
             $itemData = $itemClass->getById($comment['item_id']);
 
             if (isset($itemData['model'])) {
