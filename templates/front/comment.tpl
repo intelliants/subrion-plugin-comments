@@ -3,7 +3,7 @@
         {if $comment.author_avatar}
             {ia_image file=$comment.author_avatar|unserialize title=$comment.author class='comment__ava' gravatar=true email=$comment.email gravatar_width=200}
         {else}
-            <img src="{$img}no-avatar.png" class="comment__ava" alt="{$comment.author}">
+            <img src="{$img}no-avatar.png" class="comment__ava" alt="{$comment.author|escape}">
         {/if}
         <span class="comment__name">
             {if  0 == $comment.member_id}
@@ -13,7 +13,7 @@
                     {$comment.author|escape}
                 {/if}
             {else}
-                {ia_url type='link' data=$comment item='members' text=$comment.author}
+                {ia_url type='link' data=$comment item='member' text=$comment.author}
             {/if}
         </span>
         <span class="comment__date">{lang key='on'} {$comment.date|date_format:$core.config.date_format}</span>

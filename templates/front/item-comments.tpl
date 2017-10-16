@@ -2,7 +2,7 @@
     {ia_block title={lang key='comments'} style='movable' name='comments_form' id='comments-form' classname='box--border m-t-md' collapsible=true}
         <div class="alert alert-danger hidden" id="comments-alert"></div>
         {if !$core.config.comments_allow_guests && empty($member)}
-            <div class="alert alert-info">{lang key="error_comment_logged"}</div>
+            <div class="alert alert-info">{lang key='error_comment_logged'}</div>
         {else}
             {if empty($comments)}
                 <div class="alert alert-info">{lang key='no_comments'}</div>
@@ -16,21 +16,21 @@
                     <input type="hidden" name="email" value="{$member.email}">
                 {else}
                     <div class="form-group">
-                        <label for="author-name">{lang key="comment_author"}<span class="required">*</span></label>
+                        <label for="author-name">{lang key='comment_author'}<span class="required">*</span></label>
                         <input type="text" id="author-name" class="form-control" name="author" size="25" value="">
                     </div>
                     <div class="form-group">
-                        <label for="author-email">{lang key="author_email"}<span class="required">*</span></label>
+                        <label for="author-email">{lang key='author_email'}<span class="required">*</span></label>
                         <input type="text" class="form-control" name="email" size="25" value="">
                     </div>
                     <div class="form-group">
-                        <label for="author-url">{lang key="author_url"}</label>
+                        <label for="author-url">{lang key='author_url'}</label>
                         <input type="text" id="author-url" class="form-control" name="url" size="25" value="">
                     </div>
                 {/if}
                 <div class="form-group">
                     {if !$member}
-                        <label for="comment-body">{lang key="comment"}<span class="required">*</span></label>
+                        <label for="comment-body">{lang key='comment'}<span class="required">*</span></label>
                     {/if}
                     {if !$core.config.comments_allow_wysiwyg}
                         <textarea name="comment_body" class="form-control" id="comment-body" rows="6"></textarea>
@@ -55,8 +55,8 @@
         {if !empty($comments)}
             <div id="comments-container">
                 <div class="comments-list">
-                    {foreach $comments as $comment name='comments_list'}
-                        {include file="modules/comments/templates/front/comment.tpl"}
+                    {foreach $comments as $comment}
+                        {include 'modules/comments/templates/front/comment.tpl'}
                     {/foreach}
                 </div>
             </div>

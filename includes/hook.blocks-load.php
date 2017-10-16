@@ -26,27 +26,24 @@
 
 if (iaView::REQUEST_HTML == $iaView->getRequestType() && $iaView->blockExists('latest_comments')) {
     $iaItem = $iaCore->factory('item');
-    $iaComment = $iaCore->factoryPlugin('comments', iaCore::FRONT, 'comment');
+    $iaComment = $iaCore->factoryModule('comment', 'comments');
 
     $array = $iaComment->getLatest($iaCore->get('num_latest_comments'));
     $total = $iaDb->foundRows();
 
     foreach ($array as $key => $comment) {
-        if ('members' == $comment['item']) {
-            $iaUsers = $iaCore->factory('users');
-            $itemData = $iaUsers->getInfo($comment['item_id']);
+        if (iaUsers::getItemName() == $comment['item']) {
+            $itemData = $iaCore->factory('users')->getInfo($comment['item_id']);
             $itemData['title'] = $itemData['fullname'] ? $itemData['fullname'] : $itemData['username'];
-            $array[$key]['item_url'] = IA_URL . 'member/' . $itemData['username'] . '.html';
+            $array[$key]['item_url'] = $itemData['link'];
         } else {
-            $itemModule = $iaItem->getModuleByItem($comment['item']);
-            $itemClass = $iaCore->factoryModule('item', $itemModule, iaCore::FRONT, $comment['item']);
-            $itemData = $itemClass->getById($comment['item_id']);
+            $itemData = $iaCore->factoryItem($comment['item'])->getById($comment['item_id']);
 
             if (isset($itemData['model'])) {
                 $itemData['title'] = $itemData['model'];
             }
 
-            $array[$key]['item_url'] = $itemClass->url('view', $itemData);
+            $array[$key]['item_url'] = $itemData['link'];
         }
         if (isset($itemData['title'])) {
             $array[$key]['item_title'] = $itemData['title'];
