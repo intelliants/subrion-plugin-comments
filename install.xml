@@ -4,9 +4,9 @@
     <summary>This plugin allows visitors to comment any listing.</summary>
     <author>Intelliants LLC</author>
     <contributor>Intelliants LLC</contributor>
-    <version>4.1.0</version>
-    <date>2017-04-04</date>
-    <compatibility>4.1</compatibility>
+    <version>4.2.0</version>
+    <date>2017-10-16</date>
+    <compatibility>4.2</compatibility>
 
     <adminpages>
         <page name="comments" url="comments/" menus="menu" order="40">Comments</page>
@@ -19,8 +19,8 @@
     <configgroup name="comments">Comments</configgroup>
 
     <config group="comments" name="comments" type="divider" description="Comments Configuration">Comments Configuration</config>
-    <config group="comments" name="comments_items_enabled" type="itemscheckbox" description="List of items comments are enabled for">members,autos,autos_services,articles,estates,listings,coupons,shops,venues</config>
-    <config group="comments" name="comments_items_implemented" type="hidden" description="">members,autos,autos_services,articles,estates,listings,coupons,shops,venues</config>
+    <config group="comments" name="comments_items_enabled" type="itemscheckbox" description="List of items comments are enabled for">member,auto,autos_service,article,estate,listing,coupon,shop,venue</config>
+    <config group="comments" name="comments_items_implemented" type="hidden" description="">member,auto,autos_service,article,estate,listing,coupon,shop,venue</config>
     <config group="comments" name="comments_enabled" type="radio" description="Allow comments submission" values="1,0">1</config>
     <config group="comments" name="comments_allow_guests" type="radio" description="Allow guests to comment" values="1,0">1</config>
     <config group="comments" name="comments_allow_wysiwyg" type="radio" description="Enable WYSIWYG editor" values="1,0" private="0">0</config>
