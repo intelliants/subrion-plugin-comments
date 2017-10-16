@@ -25,8 +25,8 @@ $(function () {
         var author = $('input[name="author"]').val();
         var email = $('input[name="email"]').val();
 
-        if ('undefined' !== typeof CKEDITOR && CKEDITOR.instances['comment_body']) {
-            CKEDITOR.instances.comment_body.updateElement();
+        if ('undefined' !== typeof CKEDITOR && CKEDITOR.instances['comment-body']) {
+            CKEDITOR.instances['comment-body'].updateElement();
         }
 
         var body = $('textarea[name="comment_body"]').val();

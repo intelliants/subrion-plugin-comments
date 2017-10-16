@@ -9,7 +9,7 @@
             {else}
                 <p class="text-center"><a href="{$smarty.const.IA_SELF}#" class="btn btn-primary btn-sm" id="add-comment-btn"><span class="fa fa-pencil"></span> {lang key='add_comment'}</a></p>
             {/if}
-            <form action="" class="comment-form" method="post" id="comment-form"{if !empty($comments)} style="display: none;{/if}">
+            <form class="comment-form" method="post" id="comment-form"{if !empty($comments)} style="display: none;{/if}">
                 {preventCsrf}
                 {if $member}
                     <input type="hidden" name="author" value="{$member.username}">
@@ -35,12 +35,12 @@
                     {if !$core.config.comments_allow_wysiwyg}
                         <textarea name="comment_body" class="form-control" id="comment-body" rows="6"></textarea>
                     {else}
-                        {ia_wysiwyg name='comment_body' id='comment_form'}
+                        {ia_wysiwyg name='comment_body' id='comment-body'}
                         {ia_print_js files='ckeditor/ckeditor'}
                     {/if}
                 </div>
                 <div class="form-group" id="comments-captcha">
-                    {include file='captcha.tpl'}
+                    {include 'captcha.tpl'}
                 </div>
                 <div class="alert" id="comments-alert" style="display: none;">
                     <ul class="unstyled"></ul>
