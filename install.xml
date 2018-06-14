@@ -5,7 +5,7 @@
     <author>Intelliants LLC</author>
     <contributor>Intelliants LLC</contributor>
     <version>4.2.0</version>
-    <date>2017-10-16</date>
+    <date>2018-03-13</date>
     <compatibility>4.2</compatibility>
 
     <adminpages>
@@ -69,17 +69,17 @@
     </phrases>
 
     <blocks>
-        <block name="latest_comments" title="Latest Comments" collapsible="0" position="right" type="smarty" filename="block.latest-comments"><![CDATA[]]></block>
+        <block name="latest_comments" title="Latest Comments" collapsible="0" position="right" type="smarty" filename="block.latest-comments.tpl"><![CDATA[]]></block>
     </blocks>
 
     <hooks>
-        <hook name="phpCoreBeforePageDisplay" type="php" page_type="front"  filename="hook.blocks-load"><![CDATA[]]></hook>
-        <hook name="phpViewListingBeforeStart" type="php" page_type="front" filename="hook.item-comments"><![CDATA[]]></hook>
-        <hook name="smartyViewListingBeforeFooter" type="smarty" page_type="front" filename="item-comments"><![CDATA[]]></hook>
+        <hook name="phpCoreBeforePageDisplay" type="php" page_type="front"  filename="hook.blocks-load.php"><![CDATA[]]></hook>
+        <hook name="phpViewListingBeforeStart" type="php" page_type="front" filename="hook.item-comments.php"><![CDATA[]]></hook>
+        <hook name="smartyViewListingBeforeFooter" type="smarty" page_type="front" filename="item-comments.tpl"><![CDATA[]]></hook>
         <hook name="adminDashboardStatistics" page_type="admin"><![CDATA[$items['comments:comments'] = 'plugin';]]></hook>
-        <hook name="phpExtrasUninstallBefore" page_type="admin" filename="hook.package-actions"><![CDATA[]]></hook>
-        <hook name="phpPackageDeactivated" page_type="admin" filename="hook.package-actions"><![CDATA[]]></hook>
-        <hook name="phpPackageActivated" page_type="admin" filename="hook.package-actions"><![CDATA[]]></hook>
+        <hook name="phpExtrasUninstallBefore" page_type="admin" filename="hook.package-actions.php"><![CDATA[]]></hook>
+        <hook name="phpPackageDeactivated" page_type="admin" filename="hook.package-actions.php"><![CDATA[]]></hook>
+        <hook name="phpPackageActivated" page_type="admin" filename="hook.package-actions.php"><![CDATA[]]></hook>
     </hooks>
 
     <install>

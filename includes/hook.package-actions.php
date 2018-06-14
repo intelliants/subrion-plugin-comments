@@ -2,7 +2,7 @@
 /******************************************************************************
  *
  * Subrion - open source content management system
- * Copyright (C) 2017 Intelliants, LLC <https://intelliants.com>
+ * Copyright (C) 2018 Intelliants, LLC <https://intelliants.com>
  *
  * This file is part of Subrion.
  *
@@ -27,7 +27,7 @@
 if (iaView::REQUEST_HTML == $iaView->getRequestType()) {
     $action = $iaCore->requestPath[1];
 
-    $iaComment = $iaCore->factoryPlugin('comments', iaCore::ADMIN, 'comment');
+    $iaComment = $iaCore->factoryModule('comment', 'comment');
     $packageItems = $iaDb->onefield('item', "`package` = '{$extra}'", null, null, 'items');
     $itemsEnabled = explode(',', $iaCore->get('comments_items_enabled'));
 

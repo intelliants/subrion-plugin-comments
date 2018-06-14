@@ -2,7 +2,7 @@
 /******************************************************************************
  *
  * Subrion - open source content management system
- * Copyright (C) 2017 Intelliants, LLC <https://intelliants.com>
+ * Copyright (C) 2018 Intelliants, LLC <https://intelliants.com>
  *
  * This file is part of Subrion.
  *
@@ -29,7 +29,7 @@ if (iaView::REQUEST_JSON == $iaView->getRequestType() && isset($_POST['action'])
     $messages = array();
     $output = array();
 
-    $iaComment = $iaCore->factoryPlugin('comments', iaCore::FRONT, 'comment');
+    $iaComment = $iaCore->factoryModule('comment',  'comments');
 
     if (iaCore::ACTION_ADD == $_POST['action']) {
         iaCore::util();

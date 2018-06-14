@@ -41,7 +41,7 @@ if (empty($enabledItems) || !is_array($enabledItems)) {
 }
 
 if (in_array($item, $enabledItems) && $iaCore->get('comments_enabled')) {
-    $iaComment = $iaCore->factoryPlugin('comments', iaCore::FRONT, 'comment');
+    $iaComment = $iaCore->factoryModule('comment',  'comments');
 
     $comments = $iaComment->getByItem($item, $listing);
 

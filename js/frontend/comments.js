@@ -35,7 +35,7 @@ $(function () {
         var item = $('input[name="item"]').val();
         var captcha = $('#comments-captcha input').val();
 
-        intelli.post(intelli.config.ia_url + 'comments/read.json', {
+        intelli.post(intelli.config.url + 'comments/read.json', {
             action: 'add',
             author: author,
             item: item,
