@@ -117,7 +117,7 @@ if (iaView::REQUEST_JSON == $iaView->getRequestType() && isset($_POST['action'])
                 $iaSmarty->assign('comment', $iaComment->getById($id));
                 $iaSmarty->assign('img', IA_TPL_URL . 'img/');
 
-                $output['html'] = $iaSmarty->fetch(IA_PLUGINS . 'comments/templates/front/comment.tpl');
+                $output['html'] = $iaSmarty->fetch(IA_MODULES . 'comments/templates/front/comment.tpl');
 
                 $messages[] = iaLanguage::get('comment_added');
             } else {

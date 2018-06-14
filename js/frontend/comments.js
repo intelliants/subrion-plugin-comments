@@ -15,9 +15,12 @@ $(function () {
     });
 
     $('#leave_comment').click(function (e) {
+
         e.preventDefault();
 
         var $e = $(this);
+
+
 
         $e.prop('disabled', true)
             .after('<img src="' + intelli.config.baseurl + 'modules/comments/templates/front/img/ajax-loader.gif" id="comments-loader" style="margin-left: 15px;">');
@@ -35,7 +38,9 @@ $(function () {
         var item = $('input[name="item"]').val();
         var captcha = $('#comments-captcha input').val();
 
-        intelli.post(intelli.config.url + 'comments/read.json', {
+
+
+        intelli.post(intelli.config.baseurl + 'comments/read.json', {
             action: 'add',
             author: author,
             item: item,
